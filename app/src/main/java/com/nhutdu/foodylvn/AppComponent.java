@@ -3,6 +3,7 @@ package com.nhutdu.foodylvn;
 import com.nhutdu.core.di.ViewModelModule;
 import com.nhutdu.foodylvn.activities.ContactActivity;
 import com.nhutdu.foodylvn.activities.LoginActivity;
+import com.nhutdu.foodylvn.fragments.CategoryFragment;
 import com.nhutdu.foodylvn.fragments.LatestNewsFragment;
 
 import javax.inject.Singleton;
@@ -20,6 +21,7 @@ public interface AppComponent {
     void inject(LoginActivity activity);
     void inject(ContactActivity activity);
     void inject(LatestNewsFragment fragment);
+    void inject(CategoryFragment fragment);
 
 
 }

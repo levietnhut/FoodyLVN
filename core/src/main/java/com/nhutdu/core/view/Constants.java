@@ -20,7 +20,7 @@ public class Constants {
 
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({
-            ROOT, MAIN_PAGE, LOGIN_PAGE,REGISTER_PAGE,CONTACT_PAGE
+            ROOT, MAIN_PAGE, LOGIN_PAGE,REGISTER_PAGE,CONTACT_PAGE,ABOUT_PAGE,CREATE_RESTAURANT_PAGE
     })
     public @interface PageKey {}
 
@@ -29,5 +29,7 @@ public class Constants {
     public static final int LOGIN_PAGE = 1;
     public static final int REGISTER_PAGE = 2;
     public static final int CONTACT_PAGE = 2;
+    public static final int ABOUT_PAGE = 2;
+    public static final int CREATE_RESTAURANT_PAGE = 2;
 
 }

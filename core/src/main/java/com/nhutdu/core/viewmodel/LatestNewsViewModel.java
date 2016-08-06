@@ -48,8 +48,8 @@ public class LatestNewsViewModel extends BaseViewModel {
     private void loadFoods(){
         List<Food> lFoods = new ArrayList<>();
         Food food = new Food(1,"Nhut Le Viet","hinh1",null,"méo có nội dung đâu nhé...",null);
-        Food food1 = new Food(1,"Nhut Le Viet","hinh1",null,"méo có nội dung đâu nhé...",null);
-        Food food2 = new Food(1,"Nhut Le Viet","hinh1",null,"méo có nội dung đâu nhé...",null);
+        Food food1 = new Food(1,"Hong Tran Thu","hinh1",null,"méo có nội dung đâu nhé...",null);
+        Food food2 = new Food(1,"Ha Pham Thu","hinh1",null,"méo có nội dung đâu nhé...",null);
         lFoods.add(food);
         lFoods.add(food1);
         lFoods.add(food2);

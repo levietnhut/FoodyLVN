@@ -44,4 +44,11 @@ public class Category extends Entity {
     }
 
     //endregion
+
+
+    public Category(int id, String name, String image) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
+    }
 }

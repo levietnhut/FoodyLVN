@@ -27,8 +27,12 @@ public class LatestNewsFragment extends BaseFragment<FragmentLatestNewsBinding,L
 
     //endregion
 
+    //region Constructor
+
     public LatestNewsFragment() {
     }
+
+    //endregion
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,7 +44,7 @@ public class LatestNewsFragment extends BaseFragment<FragmentLatestNewsBinding,L
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        setBindingContentView(inflater,container,R.layout.activity_item_news, BR.viewModel);
+        setBindingContentView(inflater,container,R.layout.fragment_latest_news, BR.viewModel);
 
         View view = mViewDataBinding.getRoot();
 

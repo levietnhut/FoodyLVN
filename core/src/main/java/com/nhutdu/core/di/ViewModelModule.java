@@ -1,6 +1,7 @@
 package com.nhutdu.core.di;
 
 import com.nhutdu.core.view.INavigator;
+import com.nhutdu.core.viewmodel.CategoryViewModel;
 import com.nhutdu.core.viewmodel.ContactViewModel;
 import com.nhutdu.core.viewmodel.LatestNewsViewModel;
 import com.nhutdu.core.viewmodel.LoginViewModel;
@@ -35,6 +36,12 @@ public class ViewModelModule {
     @Singleton
     public ContactViewModel providesContactViewModel(INavigator navigator) {
         return new ContactViewModel(navigator);
+    }
+
+    @Provides
+    @Singleton
+    public CategoryViewModel providesCategoryViewModel(INavigator navigator) {
+        return new CategoryViewModel(navigator);
     }
 
     //endregion
