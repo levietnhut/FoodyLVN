@@ -1,7 +1,7 @@
 package com.nhutdu.core.model.entities;
 
 /**
- * Created by NhutDu on 02/08/2016.
+ * Created by NhutDu on 09/08/2016.
  */
 public class Food extends Entity {
 
@@ -15,7 +15,7 @@ public class Food extends Entity {
 
     private Category category;
 
-    private String context;
+    private String content;
 
     private User author;
 
@@ -57,12 +57,12 @@ public class Food extends Entity {
         this.category = category;
     }
 
-    public String getContext() {
-        return context;
+    public String getContent() {
+        return content;
     }
 
-    public void setContext(String context) {
-        this.context = context;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public User getAuthor() {
@@ -75,14 +75,93 @@ public class Food extends Entity {
 
     //endregion
 
+    //region Constructor
 
-    public Food(int id, String name, String image, Category category, String context, User author) {
+
+    public Food() {
+    }
+
+    public Food(int id, String name, String image, Category category, String content, User author) {
         super();
         this.id = id;
         this.name = name;
         this.image = image;
         this.category = category;
-        this.context = context;
+        this.content = content;
         this.author = author;
     }
+
+    //endregion
+
+    //region Builder
+
+    public static class Builder implements IBuilder<Food>{
+
+        //region Properties
+
+        private int mId;
+
+        private String mName;
+
+        private String mImage;
+
+        private Category mCategory;
+
+        private String mContent;
+
+        private User mUser;
+
+        //endregion
+
+        //region Getter and Setter
+
+        public Builder setUser(User user) {
+            mUser = user;
+            return this;
+        }
+
+        public Builder setName(String name) {
+            mName = name;
+            return this;
+        }
+
+        public Builder setImage(String image) {
+            mImage = image;
+            return this;
+        }
+
+        public Builder setCategory(Category category) {
+            mCategory = category;
+            return this;
+        }
+
+        public Builder setContent(String content) {
+            mContent = content;
+            return this;
+        }
+
+        public Builder setId(int id) {
+            mId = id;
+            return this;
+        }
+
+        //endregion
+
+        //region implements IBuilder
+
+        @Override
+        public Food build() {
+            Food food = new Food();
+            food.setId(mId);
+            food.setName(mName);
+            food.setCategory(mCategory);
+            food.setContent(mContent);
+            food.setAuthor(mUser);
+            return food;
+        }
+
+        //endregion
+    }
+
+    //endregion
 }

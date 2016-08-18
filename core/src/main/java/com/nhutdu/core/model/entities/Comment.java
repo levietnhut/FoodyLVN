@@ -4,21 +4,22 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 
+
 /**
- * Created by Administrator on 7/29/2016.
+ * Created by Administrator on 08-Aug-16.
  */
-public class Category{
+public class Comment {
 
     //region Properties
 
     @SerializedName("id")
     private int mId;
 
-    @SerializedName("name")
-    private String mName;
+    @SerializedName("title")
+    private String mTitle;
 
-    @SerializedName("image")
-    private String mImage;
+    @SerializedName("content")
+    private String mContent;
 
     @SerializedName("created_at")
     private Date mCreatedAt;
@@ -28,6 +29,9 @@ public class Category{
 
     @SerializedName("deleted_at")
     private Date mDeletedAt;
+
+    @SerializedName("commenter")
+    private User mCommenter;
 
     //endregion
 
@@ -41,12 +45,20 @@ public class Category{
         mId = id;
     }
 
-    public String getName() {
-        return mName;
+    public String getContent() {
+        return mContent;
     }
 
-    public void setName(String name) {
-        mName = name;
+    public void setContent(String content) {
+        mContent = content;
+    }
+
+    public String getTitle() {
+        return mTitle;
+    }
+
+    public void setTitle(String title) {
+        mTitle = title;
     }
 
     public Date getCreatedAt() {
@@ -65,14 +77,6 @@ public class Category{
         mUpdatedAt = updatedAt;
     }
 
-    public String getImage() {
-        return mImage;
-    }
-
-    public void setImage(String image) {
-        mImage = image;
-    }
-
     public Date getDeletedAt() {
         return mDeletedAt;
     }
@@ -81,38 +85,28 @@ public class Category{
         mDeletedAt = deletedAt;
     }
 
-    //endregion
-
-    //region Constructors
-
-    public Category(int id, String name, String image, Date createdAt, Date updatedAt, Date deletedAt) {
-        mId = id;
-        mName = name;
-        mImage = image;
-        mCreatedAt = createdAt;
-        mUpdatedAt = updatedAt;
-        mDeletedAt = deletedAt;
+    public User getCommenter() {
+        return mCommenter;
     }
 
-    public Category(){
-
+    public void setCommenter(User commenter) {
+        mCommenter = commenter;
     }
+
 
     //endregion
 
-    //region Override Methods
 
     @Override
     public String toString() {
-        return "Category{" +
+        return "Comment{" +
                 "mId=" + mId +
-                ", mName='" + mName + '\'' +
-                ", mImage='" + mImage + '\'' +
+                ", mTitle='" + mTitle + '\'' +
+                ", mContent='" + mContent + '\'' +
                 ", mCreatedAt=" + mCreatedAt +
                 ", mUpdatedAt=" + mUpdatedAt +
                 ", mDeletedAt=" + mDeletedAt +
+                ", mCommenter=" + mCommenter +
                 '}';
     }
-
-    //endregion
 }

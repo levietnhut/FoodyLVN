@@ -1,18 +1,17 @@
 package com.nhutdu.core.viewmodel;
 
 import android.databinding.Bindable;
-import android.util.Log;
 
+import com.nhutdu.core.BR;
 import com.nhutdu.core.model.entities.Restaurant;
 import com.nhutdu.core.view.INavigator;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by NhutDu on 04/08/2016.
+ * Created by NhutDu on 09/08/2016.
  */
-public class LatestNewsViewModel extends BaseViewModel {
+public class ListRestaurantViewModel extends BaseViewModel {
 
     //region Properties
 
@@ -27,41 +26,42 @@ public class LatestNewsViewModel extends BaseViewModel {
         return mRestaurants;
     }
 
-    public void setRestaurants(List<Restaurant> mRestaurants) {
-        this.mRestaurants = mRestaurants;
-//        notifyPropertyChanged(BR.restaurant);?\
+    public void setRestaurants(List<Restaurant> restaurants) {
+        mRestaurants = restaurants;
+        notifyPropertyChanged(BR.restaurants);
     }
 
     //endregion
 
     //region Constructor
 
-    public LatestNewsViewModel(INavigator navigator) {
+    public ListRestaurantViewModel(INavigator navigator) {
+
         super(navigator);
     }
 
     //endregion
 
-    //region Private methods
+    //region private methods
 
-    private void loadFoods(){
-        List<Restaurant> lRestaurants = new ArrayList<>();
+    private void loadListRestaurant(){
         getNavigator().hideBusyIndicator();
+
     }
 
     //endregion
 
+
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.d("start","ok");
-        getNavigator().showBusyIndicator("Loading...");
-        loadFoods();
+        getNavigator().showBusyIndicator("Loading....");
+        loadListRestaurant();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mRestaurants =null;
+        mRestaurants = null;
     }
 }

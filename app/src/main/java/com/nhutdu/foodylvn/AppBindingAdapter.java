@@ -3,10 +3,12 @@ package com.nhutdu.foodylvn;
 import android.databinding.BindingAdapter;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
 import com.nhutdu.core.view.BaseRecyclerViewAdapter;
 import com.squareup.picasso.Picasso;
+import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 import java.util.List;
 
@@ -26,6 +28,13 @@ public class AppBindingAdapter {
             }
         }
     }
+
+//
+//    @BindingAdapter(value = {"itemSpinner"})
+//    public static <T> void setAdapter(MaterialBetterSpinner spinner,List<T> items){
+//        ArrayAdapter<T> adapter = new ArrayAdapter<T>(items);
+//        spinner.setAdapter(adapter);
+//    }
 
     @BindingAdapter(value = {"imageUrl", "placeHolder"})
     public static void loadImage(ImageView view, String url, Drawable error) {

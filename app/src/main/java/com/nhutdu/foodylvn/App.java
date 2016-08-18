@@ -8,6 +8,7 @@ import com.nhutdu.core.view.INavigator;
 import com.nhutdu.foodylvn.activities.AboutActivity;
 import com.nhutdu.foodylvn.activities.ContactActivity;
 import com.nhutdu.foodylvn.activities.CreateRestaurantActivity;
+import com.nhutdu.foodylvn.activities.ListRestaurantActivity;
 import com.nhutdu.foodylvn.activities.LoginActivity;
 import com.nhutdu.foodylvn.activities.MainActivity;
 import com.nhutdu.foodylvn.activities.RegisterActivity;
@@ -45,6 +46,7 @@ public class App extends BaseApplication {
         navigator.configure(Constants.CONTACT_PAGE, ContactActivity.class);
         navigator.configure(Constants.ABOUT_PAGE, AboutActivity.class);
         navigator.configure(Constants.CREATE_RESTAURANT_PAGE, CreateRestaurantActivity.class);
+        navigator.configure(Constants.LIST_RESTAURANT_PAGE, ListRestaurantActivity.class);
 
         sAppComponent = DaggerAppComponent.builder()
                                           .appModule(appModule)

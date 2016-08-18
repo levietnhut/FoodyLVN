@@ -10,26 +10,27 @@ import android.view.ViewGroup;
 
 import com.nhutdu.core.view.BaseFragment;
 import com.nhutdu.core.viewmodel.LatestNewsViewModel;
+import com.nhutdu.core.viewmodel.RestaurantViewModel;
 import com.nhutdu.foodylvn.App;
 import com.nhutdu.foodylvn.BR;
 import com.nhutdu.foodylvn.R;
-import com.nhutdu.foodylvn.adapters.LatestNewsListAdapter;
-import com.nhutdu.foodylvn.databinding.FragmentLatestNewsBinding;
+import com.nhutdu.foodylvn.adapters.LatestRestaurantsListAdapter;
+import com.nhutdu.foodylvn.databinding.FragmentLatestRestaurantsBinding;
 
 /**
  * Created by NhutDu on 03/08/2016.
  */
-public class LatestNewsFragment extends BaseFragment<FragmentLatestNewsBinding,LatestNewsViewModel>{
+public class LatestRestaurantsFragment extends BaseFragment<FragmentLatestRestaurantsBinding,RestaurantViewModel>{
 
     //region Properties
 
-    LatestNewsListAdapter mAdapter;
+    LatestRestaurantsListAdapter mAdapter;
 
     //endregion
 
     //region Constructor
 
-    public LatestNewsFragment() {
+    public LatestRestaurantsFragment() {
     }
 
     //endregion
@@ -44,7 +45,7 @@ public class LatestNewsFragment extends BaseFragment<FragmentLatestNewsBinding,L
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        setBindingContentView(inflater,container,R.layout.fragment_latest_news, BR.viewModel);
+        setBindingContentView(inflater,container,R.layout.fragment_latest_restaurants, BR.viewModel);
 
         View view = mViewDataBinding.getRoot();
 
@@ -54,7 +55,7 @@ public class LatestNewsFragment extends BaseFragment<FragmentLatestNewsBinding,L
 
         recyclerView.setLayoutManager(layoutManager);
 
-        mAdapter = new LatestNewsListAdapter();
+        mAdapter = new LatestRestaurantsListAdapter();
 
         mAdapter.setViewModel(mViewModel);
 

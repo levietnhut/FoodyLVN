@@ -3,8 +3,10 @@ package com.nhutdu.core.view;
 /**
  * Created by TVG on 7/19/16.
  */
-public interface ICallback {
+public interface ICallback<T> {
 
-    void onResult(boolean result);
+    void onResult(T result);
+
+    void onFailure(Throwable t);
 
 }

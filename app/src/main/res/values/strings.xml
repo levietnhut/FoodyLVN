@@ -9,4 +9,12 @@
     <string name="navigation_title_about">About</string>
     <string name="navigation_title_contact">Contact</string>
     <string name="navigation_title_logout">Logout</string>
+    <string name="title_about">Chào mừng các bạn đã đến với FoodyLVN</string>
+    <string name="content_about">Foody được xây dựng trên nhu cầu thực tiễn của người dùng cần tìm những nơi ăn uống, mua sắm, vui
+                                chơi mà không cần phải lên google search. Ở đây người dũng có thể dễ dàng lựa chọn tùy theo
+                                nhu cầu thị hiếu của từng người dùng khác nhau. Người dùng có thể bình luận và đánh giá từng dịch vụ
+                                có trong Foody.
+                                Rất mong FoodyLVN sẽ đem lại cho các bạn trãi nghiệm thật mới mẽ...
+    </string>
+    <string name="author_about">By Nhut Le Viet</string>
 </resources>

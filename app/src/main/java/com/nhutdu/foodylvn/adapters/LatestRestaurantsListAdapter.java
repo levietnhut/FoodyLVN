@@ -6,23 +6,22 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.nhutdu.core.model.entities.Food;
+import com.nhutdu.core.model.entities.Restaurant;
 import com.nhutdu.core.view.BaseRecyclerViewAdapter;
 import com.nhutdu.core.view.ViewHolder;
-import com.nhutdu.core.viewmodel.LatestNewsViewModel;
-import com.nhutdu.foodylvn.BR;
+import com.nhutdu.core.viewmodel.RestaurantViewModel;
 import com.nhutdu.foodylvn.R;
-
+import com.nhutdu.foodylvn.BR;
 import java.util.List;
 
 /**
  * Created by TVG on 7/28/16.
  */
-public class LatestNewsListAdapter extends BaseRecyclerViewAdapter<LatestNewsViewModel, List<Food>> {
+public class LatestRestaurantsListAdapter extends BaseRecyclerViewAdapter<RestaurantViewModel, List<Restaurant>> {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ViewDataBinding viewDataBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_news, parent, false);
+        ViewDataBinding viewDataBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_fragment_restaurants, parent, false);
         return new ViewHolder(viewDataBinding);
     }
 
@@ -30,7 +29,7 @@ public class LatestNewsListAdapter extends BaseRecyclerViewAdapter<LatestNewsVie
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ViewDataBinding viewDataBinding = ((ViewHolder) holder).getViewDataBinding();
         viewDataBinding.setVariable(BR.viewModel, mViewModel);
-        viewDataBinding.setVariable(BR.food, mData.get(position));
+        viewDataBinding.setVariable(BR.restaurant, mData.get(position));
         viewDataBinding.executePendingBindings();
     }
 

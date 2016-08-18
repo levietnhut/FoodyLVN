@@ -1,11 +1,10 @@
 package com.nhutdu.core.viewmodel;
 
 import android.databinding.Bindable;
-import android.widget.Toast;
 
 import com.nhutdu.core.BR;
 import com.nhutdu.core.model.entities.Contact;
-import com.nhutdu.core.model.services.IFoodyApiService;
+import com.nhutdu.core.model.services.IUserService;
 import com.nhutdu.core.view.Constants;
 import com.nhutdu.core.view.INavigator;
 
@@ -15,9 +14,8 @@ import com.nhutdu.core.view.INavigator;
 public class ContactViewModel extends BaseViewModel {
 
     //region Properties
-    private Contact mContact;
 
-    private IFoodyApiService mFoodyApiService;
+    private Contact mContact;
 
     //endregion
 
@@ -72,7 +70,7 @@ public class ContactViewModel extends BaseViewModel {
 //    private void getUsers() {
 //        mFoodyApiService.getUsers().enqueue(new Callback<ResponseUser>() {
 //            @Override
-//            public void onResponse(Call<ResponseUser> call, Response<ResponseUser> response) {
+//            public void onResponse(Call<ResponseUser> call, ApiResponse<ResponseUser> response) {
 //                boolean check = false;
 //                ResponseUser responseUser = response.body();
 //                if (responseUser != null) {

@@ -1,0 +1,14 @@
+package com.nhutdu.core.model.services;
+
+import com.nhutdu.core.model.entities.Category;
+import com.nhutdu.core.view.ICallback;
+
+import java.util.List;
+
+/**
+ * Created by NhutDu on 17/08/2016.
+ */
+public interface ICategoryService {
+
+    void getAllCategories(ICallback<List<Category>> callback);
+}

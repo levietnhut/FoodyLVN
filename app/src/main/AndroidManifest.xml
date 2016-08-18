@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nhutdu.foodylvn" >
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,6 +24,12 @@
         <activity android:name=".activities.RegisterActivity"
             android:parentActivityName=".activities.LoginActivity"/>
         <activity android:name=".activities.ContactActivity"
+            android:parentActivityName=".activities.MainActivity"/>
+        <activity android:name=".activities.AboutActivity"
+                  android:parentActivityName=".activities.MainActivity"/>
+        <activity android:name=".activities.CreateRestaurantActivity"
+                  android:parentActivityName=".activities.MainActivity"/>
+        <activity android:name=".activities.ListRestaurantActivity"
             android:parentActivityName=".activities.MainActivity"/>
     </application>
 

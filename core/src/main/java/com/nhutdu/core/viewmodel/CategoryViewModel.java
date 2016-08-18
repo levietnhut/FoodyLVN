@@ -4,6 +4,9 @@ import android.databinding.Bindable;
 import android.util.Log;
 
 import com.nhutdu.core.model.entities.Category;
+import com.nhutdu.core.model.services.clouds.CategoryCloudService;
+import com.nhutdu.core.view.Constants;
+import com.nhutdu.core.view.ICallback;
 import com.nhutdu.core.view.INavigator;
 
 import java.util.ArrayList;
@@ -19,6 +22,8 @@ public class CategoryViewModel extends BaseViewModel {
     private final static String TAG = CategoryViewModel.class.getSimpleName();
 
     private List<Category> mCategories;
+
+    private CategoryCloudService mCategoryCloudService;
 
     //endregion
 
@@ -38,8 +43,10 @@ public class CategoryViewModel extends BaseViewModel {
 
     //region Constructor
 
-    public CategoryViewModel(INavigator navigator) {
+    public CategoryViewModel(INavigator navigator, CategoryCloudService categoryCloudService) {
         super(navigator);
+        this.mCategoryCloudService = categoryCloudService;
+
     }
 
     //endregion
@@ -47,29 +54,31 @@ public class CategoryViewModel extends BaseViewModel {
     //region Private methods
 
     private void loadCategory(){
+        mCategoryCloudService.getAllCategories(new ICallback<List<Category>>() {
+            @Override
+            public void onResult(List<Category> result) {
+                Log.d(TAG,"load category success");
+                setCategories(result);
+            }
 
-        List<Category> categories = new ArrayList<>();
-        Category category = new Category(1,"Cà phê phố","");
-        Category category1 = new Category(2,"Lãng mạng sang trọng","");
-        Category category2 = new Category(3,"Nhà hàng chay ngon nhất","");
-        Category category3 = new Category(4,"Quán ăn vặt ngon nhất","");
-        Category category4 = new Category(5,"Hẹn hò 100k","");
-        Category category5 = new Category(6,"Trà sữa cóc","");
-        Category category6 = new Category(7,"Quán ăn Hàn","");
-        Category category7 = new Category(8,"Ăn vặt Sài Thành","");
-
-        categories.add(category);
-        categories.add(category1);
-        categories.add(category2);
-        categories.add(category3);
-        categories.add(category4);
-        categories.add(category5);
-        categories.add(category6);
-        categories.add(category7);
-
-        setCategories(categories);
-
+            @Override
+            public void onFailure(Throwable t) {
+                Log.d(TAG,"load category failes "+t.getLocalizedMessage());
+            }
+        });
         getNavigator().hideBusyIndicator();
+
+    }
+
+    //endregion
+
+    //region Public methods
+
+    public void showRestaurant(Category category){
+        Log.d("show restaurant","OK");
+        getEventBus().postSticky(category);
+
+        getNavigator().navigateTo(Constants.LIST_RESTAURANT_PAGE);
 
     }
 
@@ -78,9 +87,7 @@ public class CategoryViewModel extends BaseViewModel {
 
     @Override
     public void onCreate() {
-
         super.onCreate();
-
         Log.d(TAG,"OK");
         getNavigator().showBusyIndicator("Loading....");
         loadCategory();

@@ -1,102 +1,118 @@
 package com.nhutdu.core.model.entities;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.Date;
 
 /**
  * Created by NhutDu on 02/08/2016.
  */
-public class User extends Entity {
+public class User {
 
-    // region Properties
+    //region Properties
 
     @SerializedName("id")
-    private int mId;
+    private String mId;
 
     @SerializedName("name")
-    private String mName;
-
-    @SerializedName("email")
-    private String mEmail;
-
-    @SerializedName("role")
-    private int mRole;
+    private String mUserName;
 
     @SerializedName("password")
     private String mPassword;
 
-    @SerializedName("status")
-    private int mStatus;
+    @Expose
+    private String mRetypePassword;
 
-    @SerializedName("remember_token")
-    private String mRememberToken;
+    @SerializedName("email")
+    private String mEmail;
 
-    //end region
+    @SerializedName("created_at")
+    private Date mCreatedAt;
 
-    // region Getter and Setter
+    @SerializedName("updated_at")
+    private Date mUpdatedAt;
 
-    public int getmId() {
+    @SerializedName("deleted_at")
+    private Date mDeletedAt;
+
+
+    //endregion
+
+    //region Getter and Setter
+
+    public String getId() {
         return mId;
     }
 
-    public void setmId(int mId) {
-        this.mId = mId;
+    public void setId(String id) {
+        mId = id;
     }
 
-    public String getmName() {
-        return mName;
+    public String getUserName() {
+        return mUserName;
     }
 
-    public void setmName(String mName) {
-        this.mName = mName;
+    public void setUserName(String userName) {
+        mUserName = userName;
     }
 
-    public String getmEmail() {
-        return mEmail;
-    }
-
-    public void setmEmail(String mEmail) {
-        this.mEmail = mEmail;
-    }
-
-    public int getmRole() {
-        return mRole;
-    }
-
-    public void setmRole(int mRole) {
-        this.mRole = mRole;
-    }
-
-    public String getmPassword() {
+    public String getPassword() {
         return mPassword;
     }
 
-    public void setmPassword(String mPassword) {
-        this.mPassword = mPassword;
+    public void setPassword(String password) {
+        mPassword = password;
     }
 
-    public int getmStatus() {
-        return mStatus;
+    public String getEmail() {
+        return mEmail;
     }
 
-    public void setmStatus(int mStatus) {
-        this.mStatus = mStatus;
+    public void setEmail(String email) {
+        mEmail = email;
     }
 
-    public String getmRememberToken() {
-        return mRememberToken;
+    public Date getCreatedAt() {
+        return mCreatedAt;
     }
 
-    public void setmRememberToken(String mRememberToken) {
-        this.mRememberToken = mRememberToken;
+    public void setCreatedAt(Date createdAt) {
+        mCreatedAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return mUpdatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        mUpdatedAt = updatedAt;
+    }
+
+    public Date getDeletedAt() {
+        return mDeletedAt;
+    }
+
+    public void setDeletedAt(Date deletedAt) {
+        mDeletedAt = deletedAt;
+    }
+
+    public String getRetypePassword() {
+        return mRetypePassword;
+    }
+
+    public void setRetypePassword(String retypePassword) {
+        mRetypePassword = retypePassword;
     }
 
     //endregion
 
-    public static class Builder implements IBuilder<User>{
+    //region Constructors
 
-        @Override
-        public User build() {
-            return null;
-        }
+    public User() {
+        super();
     }
+
+    //endregion
+
 }

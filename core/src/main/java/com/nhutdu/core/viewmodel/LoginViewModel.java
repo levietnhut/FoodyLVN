@@ -3,9 +3,12 @@ package com.nhutdu.core.viewmodel;
 import android.databinding.Bindable;
 import android.util.Log;
 
+import com.nhutdu.core.BR;
 import com.nhutdu.core.model.entities.User;
-import com.nhutdu.core.model.services.IFoodyApiService;
+import com.nhutdu.core.model.services.IUserService;
+import com.nhutdu.core.model.services.clouds.UserCloudService;
 import com.nhutdu.core.view.Constants;
+import com.nhutdu.core.view.ICallback;
 import com.nhutdu.core.view.INavigator;
 
 import java.util.List;
@@ -18,39 +21,28 @@ public class LoginViewModel extends BaseViewModel {
     //region Properties
     private User mUser;
 
-    private IFoodyApiService mFoodyApiService;
-
-    private List<User> mUsers;
+    private UserCloudService mUserCloudService;
 
     //endregion
 
     //region Getter and Setter
-    @Bindable
-    public User getmUser() {
+
+    public User getUser() {
         return mUser;
     }
 
-    public void setmUser(User mUser) {
-        this.mUser = mUser;
-    }
-
-    public List<User> getmUsers() {
-        return mUsers;
-    }
-
-    public void setmUsers(List<User> mUsers, IFoodyApiService service) {
-
-        this.mUsers = mUsers;
-
-        this.mFoodyApiService = service;
+    public LoginViewModel setUser(User user) {
+        mUser = user;
+        return this;
     }
 
     //endregion
 
     // region Constructor
 
-    public LoginViewModel(INavigator navigator) {
+    public LoginViewModel(INavigator navigator, UserCloudService mUserCloudService) {
         super(navigator);
+        this.mUserCloudService = mUserCloudService;
     }
 
     //endregion
@@ -84,7 +76,7 @@ public class LoginViewModel extends BaseViewModel {
 //    private void getUsers() {
 //        mFoodyApiService.getUsers().enqueue(new Callback<ResponseUser>() {
 //            @Override
-//            public void onResponse(Call<ResponseUser> call, Response<ResponseUser> response) {
+//            public void onResponse(Call<ResponseUser> call, ApiResponse<ResponseUser> response) {
 //                boolean check = false;
 //                ResponseUser responseUser = response.body();
 //                if (responseUser != null) {
@@ -107,10 +99,30 @@ public class LoginViewModel extends BaseViewModel {
 //        });
 //    }
 
+    public void logIn(final User user){
+        Log.e("cccccc","cccccc");
+        getNavigator().showBusyIndicator("Loading....");
+        mUserCloudService.logIn(user, new ICallback<User>() {
+            @Override
+            public void onResult(User result) {
+                getNavigator().hideBusyIndicator();
+                getEventBus().post(user);
+
+                getNavigator().goBack();
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                getNavigator().hideBusyIndicator();
+            }
+        });
+    }
+
     public void showRegister(){
-        Log.d("log","Sao may meo chay the thang cho");
         getNavigator().navigateTo(Constants.REGISTER_PAGE);
     }
 
     //endregion
+
+
 }

@@ -2,9 +2,7 @@ package com.nhutdu.foodylvn.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -14,13 +12,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.nhutdu.core.view.Navigator;
 import com.nhutdu.foodylvn.R;
 import com.nhutdu.foodylvn.adapters.ViewPagerAdapter;
 import com.nhutdu.foodylvn.fragments.CategoryFragment;
-import com.nhutdu.foodylvn.fragments.LatestNewsFragment;
+import com.nhutdu.foodylvn.fragments.LatestRestaurantsFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -38,7 +35,7 @@ public class MainActivity extends AppCompatActivity
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new LatestNewsFragment(), "Latest News");
+        adapter.addFragment(new LatestRestaurantsFragment(), "Latest News");
         adapter.addFragment(new CategoryFragment(), "Category");
         mViewPager.setAdapter(adapter);
         mTabLayout.setupWithViewPager(mViewPager);
@@ -102,15 +99,14 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_create_news) {
-            startActivity(new Intent(MainActivity.this,ContactActivity.class));
+            startActivity(new Intent(MainActivity.this,CreateRestaurantActivity.class));
         } else if (id == R.id.nav_about) {
-            startActivity(new Intent(MainActivity.this,ContactActivity.class));
+            startActivity(new Intent(MainActivity.this,AboutActivity.class));
         } else if (id == R.id.nav_contact) {
             startActivity(new Intent(MainActivity.this,ContactActivity.class));
         } else if (id == R.id.nav_logout) {
             startActivity(new Intent(MainActivity.this,LoginActivity.class));
         }
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

@@ -5,11 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
-            name="food"
-            type="com.nhutdu.core.model.entities.Food"/>
+            name="restaurant"
+            type="com.nhutdu.core.model.entities.Restaurant"/>
         <variable
             name="viewModel"
-            type="com.nhutdu.core.viewmodel.LatestNewsViewModel"/>
+            type="com.nhutdu.core.viewmodel.ListRestaurantViewModel"/>
     </data>
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:text="@{food.name}"
+                android:text="@{restaurant.name}"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/name"
-                android:text="16 Nguyễn Lương Bằng, Hòa Khánh Bắc"
+                android:text="@{restaurant.address}"
                 android:textSize="14sp" />
 
             <ImageView
@@ -47,7 +47,12 @@
                 android:layout_below="@+id/address"
                 android:src="@drawable/image"
                 android:scaleType="fitCenter"/>
-
+            <!--
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
+                -->
             <TextView
                 android:id="@+id/comment"
                 android:layout_width="wrap_content"

@@ -27,11 +27,18 @@ dependencies {
     compile project(':core')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.1.1'
+    compile 'com.android.support:recyclerview-v7:24.1.1'
+    compile 'com.android.support:cardview-v7:24.1.1'
+    compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.android.support:design:24.1.1'
-    compile 'com.google.dagger:dagger:2.6'
-    provided 'javax.annotation:jsr250-api:1.0'
+    compile 'com.android.support:support-v4:24.1.1'
     compile 'com.squareup.picasso:picasso:2.5.2'
-    apt 'com.google.dagger:dagger-compiler:2.6'
+
+    provided 'javax.annotation:jsr250-api:1.0'
+    compile 'com.google.dagger:dagger:2.5'
+    apt 'com.google.dagger:dagger-compiler:2.5'
     apt 'com.android.databinding:compiler:1+'
     compile 'com.android.support:cardview-v7:24.1.1'
+    compile 'com.weiwangcn.betterspinner:library-material:1.1.0'
 }
