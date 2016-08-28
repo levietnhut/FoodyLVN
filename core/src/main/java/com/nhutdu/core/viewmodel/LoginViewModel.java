@@ -7,6 +7,7 @@ import com.nhutdu.core.BR;
 import com.nhutdu.core.model.entities.User;
 import com.nhutdu.core.model.services.IUserService;
 import com.nhutdu.core.model.services.clouds.UserCloudService;
+import com.nhutdu.core.model.services.storages.UserStorageService;
 import com.nhutdu.core.view.Constants;
 import com.nhutdu.core.view.ICallback;
 import com.nhutdu.core.view.INavigator;
@@ -19,9 +20,16 @@ import java.util.List;
 public class LoginViewModel extends BaseViewModel {
 
     //region Properties
+
+    private static final String TAG = LoginViewModel.class.getSimpleName();
+
     private User mUser;
 
     private UserCloudService mUserCloudService;
+
+    private UserStorageService mUserStorageService;
+
+    private String mError;
 
     //endregion
 
@@ -35,23 +43,56 @@ public class LoginViewModel extends BaseViewModel {
         mUser = user;
         return this;
     }
+    @Bindable
+    public String getError() {
+        return mError;
+    }
+
+    public void setError(String error) {
+        mError = error;
+        notifyPropertyChanged(BR.error);
+    }
 
     //endregion
 
     // region Constructor
 
-    public LoginViewModel(INavigator navigator, UserCloudService mUserCloudService) {
+    public LoginViewModel(INavigator navigator, UserCloudService userCloudService, UserStorageService userStorageService) {
         super(navigator);
-        this.mUserCloudService = mUserCloudService;
+        this.mUserCloudService = userCloudService;
+        this.mUserStorageService = userStorageService;
     }
 
     //endregion
+
+    //method check validate user
+
+    public boolean validateUser(User user){
+
+        if(user.getEmail().isEmpty()){
+            setError("Vui lòng nhập email");
+            return false;
+        }
+        if(user.getPassword().isEmpty()){
+            setError("Vui lòng nhập mật khẩu");
+            return false;
+        }
+
+        return true;
+    }
+
+    //endregion
+
 
     //region Lifecycle
 
     @Override
     public void onCreate() {
         super.onCreate();
+
+        mUser = new User();
+        mUser.setEmail("");
+        mUser.setPassword("");
     }
 
     @Override
@@ -67,55 +108,61 @@ public class LoginViewModel extends BaseViewModel {
     @Override
     public void onDestroy() {
         super.onDestroy();
+
+        mUser=null;
+        mError= null;
     }
 
     //endregion
 
     //region Private methods
 
-//    private void getUsers() {
-//        mFoodyApiService.getUsers().enqueue(new Callback<ResponseUser>() {
+    public void logIn(final User user){
+        getNavigator().showBusyIndicator("Login....");
+        if(validateUser(user)){
+            mUserStorageService.logIn(user, new ICallback<User>() {
+                @Override
+                public void onResult(User result) {
+                    if(result.isLoaded() && result.isValid()){
+
+                        getNavigator().hideBusyIndicator();
+
+                        getEventBus().postSticky(result);
+
+                        getNavigator().getApplication().setUserLogin(result);
+
+                        getNavigator().goBack();
+
+                    }else{
+                        getNavigator().hideBusyIndicator();
+                        setError("Sai tài khoản hoặc mật khẩu");
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Throwable t) {
+                    Log.d(TAG,"",t);
+                    getNavigator().hideBusyIndicator();
+                }
+            });
+        }
+
+
+//        mUserCloudService.logIn(user, new ICallback<User>() {
 //            @Override
-//            public void onResponse(Call<ResponseUser> call, ApiResponse<ResponseUser> response) {
-//                boolean check = false;
-//                ResponseUser responseUser = response.body();
-//                if (responseUser != null) {
-//                    for (User user : responseUser.getmUsers()) {
-//                        if (user.getmName() == "vietnhut") {
-//                            Log.d("user", "ok");
-//                            check = true;
-//                        }
-//                    }
-//                    if (!check) {
-//                        Log.d("user", "don't exist");
-//                    }
-//                }
+//            public void onResult(User result) {
+//                getNavigator().hideBusyIndicator();
+//                getEventBus().post(user);
+//
+//                getNavigator().goBack();
 //            }
 //
 //            @Override
-//            public void onFailure(Call<ResponseUser> call, Throwable t) {
-//
+//            public void onFailure(Throwable t) {
+//                getNavigator().hideBusyIndicator();
 //            }
 //        });
-//    }
-
-    public void logIn(final User user){
-        Log.e("cccccc","cccccc");
-        getNavigator().showBusyIndicator("Loading....");
-        mUserCloudService.logIn(user, new ICallback<User>() {
-            @Override
-            public void onResult(User result) {
-                getNavigator().hideBusyIndicator();
-                getEventBus().post(user);
-
-                getNavigator().goBack();
-            }
-
-            @Override
-            public void onFailure(Throwable t) {
-                getNavigator().hideBusyIndicator();
-            }
-        });
     }
 
     public void showRegister(){

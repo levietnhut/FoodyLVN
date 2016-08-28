@@ -6,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.nhutdu.core.view.BaseActivity;
-import com.nhutdu.core.viewmodel.ListRestaurantViewModel;
+import com.nhutdu.core.viewmodel.RestaurantsByCategoryViewModel;
 import com.nhutdu.foodylvn.App;
 import com.nhutdu.foodylvn.BR;
 import com.nhutdu.foodylvn.R;
@@ -16,7 +16,7 @@ import com.nhutdu.foodylvn.databinding.ActivityListRestaurantBinding;
 /**
  * Created by NhutDu on 09/08/2016.
  */
-public class ListRestaurantActivity extends BaseActivity<ActivityListRestaurantBinding,ListRestaurantViewModel> {
+public class ListRestaurantActivity extends BaseActivity<ActivityListRestaurantBinding,RestaurantsByCategoryViewModel> {
 
     //region Properties
 

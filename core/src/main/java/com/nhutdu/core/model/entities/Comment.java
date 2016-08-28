@@ -4,15 +4,19 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
 
 /**
  * Created by Administrator on 08-Aug-16.
  */
-public class Comment {
+public class Comment extends RealmObject{
 
     //region Properties
 
     @SerializedName("id")
+    @PrimaryKey
     private int mId;
 
     @SerializedName("title")
@@ -109,4 +113,11 @@ public class Comment {
                 ", mCommenter=" + mCommenter +
                 '}';
     }
+
+    //region Constructor
+
+    public Comment() {
+    }
+
+    //endregion
 }

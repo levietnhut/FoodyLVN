@@ -3,9 +3,11 @@ package com.nhutdu.core.viewmodel;
 import android.databinding.Bindable;
 import android.util.Log;
 
-import com.nhutdu.core.BR;
+
+
 import com.nhutdu.core.model.entities.Restaurant;
 import com.nhutdu.core.model.services.clouds.RestaurantCloudService;
+import com.nhutdu.core.model.services.storages.RestaurantStorageService;
 import com.nhutdu.core.view.ICallback;
 import com.nhutdu.core.view.INavigator;
 
@@ -21,6 +23,8 @@ public class RestaurantViewModel extends BaseViewModel{
     private static final String TAG = RestaurantViewModel.class.getSimpleName();
 
     RestaurantCloudService mRestaurantCloudService;
+
+    RestaurantStorageService mRestaurantStorageService;
 
     List<Restaurant> mAllRestaurants;
 
@@ -43,16 +47,17 @@ public class RestaurantViewModel extends BaseViewModel{
 
     public void setAllRestaurants(List<Restaurant> allRestaurants) {
         mAllRestaurants = allRestaurants;
-        notifyPropertyChanged(BR.allRestaurants);
+//        notifyPropertyChanged(BR.allRestaurants);
     }
 
     //endregion
 
     //region Constructor
 
-    public RestaurantViewModel(INavigator navigator, RestaurantCloudService restaurantCloudService) {
+    public RestaurantViewModel(INavigator navigator, RestaurantCloudService restaurantCloudService, RestaurantStorageService restaurantStorageService) {
         super(navigator);
-        mRestaurantCloudService = restaurantCloudService;
+        this.mRestaurantCloudService = restaurantCloudService;
+        this.mRestaurantStorageService = restaurantStorageService;
     }
 
     //endregion
@@ -60,18 +65,8 @@ public class RestaurantViewModel extends BaseViewModel{
     //region Private methods
 
     private void loadAllRestaurants(){
-        mRestaurantCloudService.getAllRestaurants(new ICallback<List<Restaurant>>() {
-            @Override
-            public void onResult(List<Restaurant> result) {
-                setAllRestaurants(result);
-                getNavigator().hideBusyIndicator();
-            }
 
-            @Override
-            public void onFailure(Throwable t) {
-                getNavigator().hideBusyIndicator();
-            }
-        });
+
     }
 
     //endregion

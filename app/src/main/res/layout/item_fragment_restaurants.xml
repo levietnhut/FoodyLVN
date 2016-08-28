@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="restaurant"
             type="com.nhutdu.core.model.entities.Restaurant"/>
         <variable
             name="viewModel"
-            type="com.nhutdu.core.viewmodel.RestaurantViewModel"/>
+            type="com.nhutdu.core.viewmodel.LatestRestaurantsViewModel"/>
     </data>
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"

@@ -11,4 +11,8 @@ import java.util.List;
 public interface ICategoryService {
 
     void getAllCategories(ICallback<List<Category>> callback);
+
+    void saveCategory(Category category,ICallback<Boolean> callback);
+
+    void saveCategories(List<Category> categories,ICallback<Boolean> callback);
 }

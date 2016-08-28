@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Created by NhutDu on 05/08/2016.
  */
-public class Contact extends Entity {
+public class Contact {
 
     //region Properties
 
@@ -44,6 +44,13 @@ public class Contact extends Entity {
 
     public void setmEmail(String mEmail) {
         this.mEmail = mEmail;
+    }
+
+    //endregion
+
+    //region Constructor
+
+    public Contact() {
     }
 
     //endregion

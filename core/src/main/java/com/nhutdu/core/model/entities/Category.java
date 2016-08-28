@@ -4,14 +4,19 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
+
 /**
  * Created by Administrator on 7/29/2016.
  */
-public class Category{
+public class Category extends RealmObject{
 
     //region Properties
 
     @SerializedName("id")
+    @PrimaryKey
     private int mId;
 
     @SerializedName("name")
@@ -85,6 +90,10 @@ public class Category{
 
     //region Constructors
 
+    public Category(){
+
+    }
+
     public Category(int id, String name, String image, Date createdAt, Date updatedAt, Date deletedAt) {
         mId = id;
         mName = name;
@@ -92,10 +101,6 @@ public class Category{
         mCreatedAt = createdAt;
         mUpdatedAt = updatedAt;
         mDeletedAt = deletedAt;
-    }
-
-    public Category(){
-
     }
 
     //endregion

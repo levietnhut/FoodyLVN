@@ -1,6 +1,9 @@
 package com.nhutdu.core.model.services.clouds;
 
+import com.nhutdu.core.model.entities.Restaurant;
 import com.nhutdu.core.model.responses.ApiResponse;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -11,5 +14,5 @@ import retrofit2.http.GET;
 public interface IRestaurantCloudService {
 
     @GET("api/v1/restaurants")
-    Call<ApiResponse> getAllRestaurants();
+    Call<ApiResponse<List<Restaurant>>> getAllRestaurants();
 }

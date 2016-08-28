@@ -2,6 +2,7 @@ package com.nhutdu.core.model.services.clouds;
 
 import android.util.Log;
 
+import com.nhutdu.core.model.entities.Category;
 import com.nhutdu.core.model.entities.Restaurant;
 import com.nhutdu.core.model.responses.ApiResponse;
 import com.nhutdu.core.model.services.IRestaurantService;
@@ -34,24 +35,30 @@ public class RestaurantCloudService extends BaseCloudService<IRestaurantCloudSer
 
     @Override
     public void getAllRestaurants(final ICallback<List<Restaurant>> callback) {
-        getICloudService().getAllRestaurants().enqueue(new Callback<ApiResponse>() {
+        getICloudService().getAllRestaurants().enqueue(new Callback<ApiResponse<List<Restaurant>>>() {
             @Override
-            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
-                Log.d(TAG,response.body().toString());
-                ApiResponse apiResponse = response.body();
-                if(apiResponse.isSuccess()){
-                    Log.d(TAG,apiResponse.getData().get(0).toString());
-                    callback.onResult(apiResponse.getData());
-                }else{
-                    Log.d(TAG,"cant load restaurant");
-                }
+            public void onResponse(Call<ApiResponse<List<Restaurant>>> call, Response<ApiResponse<List<Restaurant>>> response) {
+
             }
 
             @Override
-            public void onFailure(Call<ApiResponse> call, Throwable t) {
-                Log.d(TAG,"",t);
+            public void onFailure(Call<ApiResponse<List<Restaurant>>> call, Throwable t) {
+
             }
         });
     }
 
+    @Override
+    public void saveRestaurant(Restaurant restaurant, ICallback<Boolean> callback) {
+
+    }
+
+    @Override
+    public void saveRestaurants(List<Restaurant> restaurants, ICallback<Boolean> callback) {
+    }
+
+    @Override
+    public void getRestaurantsByCategory(Category category, ICallback<List<Restaurant>> callback) {
+
+    }
 }

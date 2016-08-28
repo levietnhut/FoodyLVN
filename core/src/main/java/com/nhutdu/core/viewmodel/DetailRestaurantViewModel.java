@@ -34,7 +34,7 @@ public class DetailRestaurantViewModel extends BaseViewModel {
     public void onCreate() {
 
         super.onCreate();
-        getNavigator().showBusyIndicator("Loading.....");
+//        getNavigator().showBusyIndicator("Loading.....");
 
     }
 

@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.nhutdu.core.viewmodel.RestaurantViewModel" />
+            type="com.nhutdu.core.viewmodel.LatestRestaurantsViewModel" />
     </data>
 
     <LinearLayout
@@ -18,7 +18,7 @@
             android:id="@+id/rv_latest_news"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:items="@{viewModel.allRestaurants}">
+            app:items="@{viewModel.restaurants}">
 
         </android.support.v7.widget.RecyclerView>
     </LinearLayout>

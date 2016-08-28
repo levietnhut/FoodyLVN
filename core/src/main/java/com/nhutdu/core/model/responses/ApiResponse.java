@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by Administrator on 7/30/2016.
  */
-public class ApiResponse {
+public class ApiResponse<T> {
 
     //region Properties
 
@@ -16,7 +16,7 @@ public class ApiResponse {
     private boolean mSuccess;
 
     @SerializedName("data")
-    private List<Restaurant> mData;
+    private T mData;
 
     @SerializedName("message")
     private String mMessage;
@@ -38,11 +38,11 @@ public class ApiResponse {
         mSuccess = success;
     }
 
-    public List<Restaurant> getData() {
+    public T getData() {
         return mData;
     }
 
-    public void setData(List<Restaurant> data) {
+    public void setData(T data) {
         mData = data;
     }
 

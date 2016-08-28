@@ -4,11 +4,15 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
+import java.util.List;
+
+import io.realm.RealmList;
+import io.realm.RealmObject;
 
 /**
  * Created by NhutDu on 02/08/2016.
  */
-public class User {
+public class User extends RealmObject{
 
     //region Properties
 
@@ -36,10 +40,20 @@ public class User {
     @SerializedName("deleted_at")
     private Date mDeletedAt;
 
+    @Expose
+    private RealmList<Restaurant> mFavoriteRestaurant;
 
     //endregion
 
     //region Getter and Setter
+
+    public RealmList<Restaurant> getFavoriteRestaurant() {
+        return mFavoriteRestaurant;
+    }
+
+    public void setFavoriteRestaurant(RealmList<Restaurant> favoriteRestaurant) {
+        mFavoriteRestaurant = favoriteRestaurant;
+    }
 
     public String getId() {
         return mId;
@@ -110,8 +124,25 @@ public class User {
     //region Constructors
 
     public User() {
-        super();
     }
+
+    //endregion
+
+    //region Override Methods
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "mId='" + mId + '\'' +
+                ", mUserName='" + mUserName + '\'' +
+                ", mPassword='" + mPassword + '\'' +
+                ", mEmail='" + mEmail + '\'' +
+                ", mCreatedAt=" + mCreatedAt +
+                ", mUpdatedAt=" + mUpdatedAt +
+                ", mDeletedAt=" + mDeletedAt +
+                '}';
+    }
+
 
     //endregion
 

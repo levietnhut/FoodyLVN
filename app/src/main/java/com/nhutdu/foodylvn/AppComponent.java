@@ -2,6 +2,7 @@ package com.nhutdu.foodylvn;
 
 import com.nhutdu.core.di.ViewModelModule;
 import com.nhutdu.foodylvn.activities.ContactActivity;
+import com.nhutdu.foodylvn.activities.CreateRestaurantActivity;
 import com.nhutdu.foodylvn.activities.ListRestaurantActivity;
 import com.nhutdu.foodylvn.activities.LoginActivity;
 import com.nhutdu.foodylvn.activities.RegisterActivity;
@@ -23,6 +24,7 @@ public interface AppComponent {
     void inject(LoginActivity activity);
     void inject(ContactActivity activity);
     void inject(RegisterActivity activity);
+    void inject(CreateRestaurantActivity activity);
     void inject(ListRestaurantActivity activity);
     void inject(LatestRestaurantsFragment fragment);
     void inject(CategoryFragment fragment);

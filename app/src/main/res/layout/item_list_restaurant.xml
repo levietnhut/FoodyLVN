@@ -9,7 +9,7 @@
             type="com.nhutdu.core.model.entities.Restaurant"/>
         <variable
             name="viewModel"
-            type="com.nhutdu.core.viewmodel.ListRestaurantViewModel"/>
+            type="com.nhutdu.core.viewmodel.LatestRestaurantsViewModel"/>
     </data>
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"

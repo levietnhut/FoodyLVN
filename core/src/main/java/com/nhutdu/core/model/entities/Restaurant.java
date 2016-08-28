@@ -5,13 +5,17 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 import java.util.List;
 
+import io.realm.RealmList;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
 /**
  * Created by Administrator on 7/26/2016.
  */
-public class Restaurant{
+public class Restaurant extends RealmObject{
     //region Properties
-
     @SerializedName("id")
+    @PrimaryKey
     private int mId;
 
     @SerializedName("name")
@@ -48,48 +52,14 @@ public class Restaurant{
     private Date mDeletedAt;
 
     @SerializedName("comments")
-    private List<Comment> mComments;
+    private RealmList<Comment> mComments;
 
     @SerializedName("category")
     private Category mCategory;
 
     //endregion
 
-    //region Constructors
-
-    public Restaurant() {
-    }
-
-    public Restaurant(int id, String name, String address, String openTime, String closeTime, String phoneNumber, String image, String content) {
-        mId = id;
-        mName = name;
-        mAddress = address;
-        mOpenTime = openTime;
-        mCloseTime = closeTime;
-        mPhoneNumber = phoneNumber;
-        mImage = image;
-        mContent = content;
-    }
-
-    public Restaurant(int id, int categoryId, String name, String address, String openTime, String closeTime, String phoneNumber, String image, String content, Date createdAt, Date updatedAt, Date deletedAt) {
-        mId = id;
-        mCategoryId = categoryId;
-        mName = name;
-        mAddress = address;
-        mOpenTime = openTime;
-        mCloseTime = closeTime;
-        mPhoneNumber = phoneNumber;
-        mImage = image;
-        mContent = content;
-        mCreatedAt = createdAt;
-        mUpdatedAt = updatedAt;
-        mDeletedAt = deletedAt;
-    }
-
-    //endregion
-
     //region Setters and Getters
-
 
     public int getId() {
         return mId;
@@ -179,11 +149,11 @@ public class Restaurant{
         mDeletedAt = deletedAt;
     }
 
-    public List<Comment> getComments() {
+    public RealmList<Comment> getComments() {
         return mComments;
     }
 
-    public void setComments(List<Comment> comments) {
+    public void setComments(RealmList<Comment> comments) {
         mComments = comments;
     }
 
@@ -212,4 +182,38 @@ public class Restaurant{
     }
 
     //endregion
+
+    //region Constructors
+
+    public Restaurant() {
+    }
+
+    public Restaurant(int id, String name, String address, String openTime, String closeTime, String phoneNumber, String image, String content) {
+        mId = id;
+        mName = name;
+        mAddress = address;
+        mOpenTime = openTime;
+        mCloseTime = closeTime;
+        mPhoneNumber = phoneNumber;
+        mImage = image;
+        mContent = content;
+    }
+
+    public Restaurant(int id, int categoryId, String name, String address, String openTime, String closeTime, String phoneNumber, String image, String content, Date createdAt, Date updatedAt, Date deletedAt) {
+        mId = id;
+        mCategoryId = categoryId;
+        mName = name;
+        mAddress = address;
+        mOpenTime = openTime;
+        mCloseTime = closeTime;
+        mPhoneNumber = phoneNumber;
+        mImage = image;
+        mContent = content;
+        mCreatedAt = createdAt;
+        mUpdatedAt = updatedAt;
+        mDeletedAt = deletedAt;
+    }
+
+    //endregion
+
 }

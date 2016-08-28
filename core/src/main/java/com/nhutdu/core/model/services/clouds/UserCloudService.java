@@ -46,7 +46,7 @@ public class UserCloudService extends BaseCloudService<IUserCloudService> implem
     }
 
     @Override
-    public void register(User user, ICallback<User> callback) {
+    public void register(User user, ICallback<Boolean> callback) {
     }
 
     //endregion

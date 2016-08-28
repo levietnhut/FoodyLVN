@@ -1,166 +1,141 @@
 package com.nhutdu.core.model.entities;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.util.Date;
+
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
 /**
- * Created by NhutDu on 09/08/2016.
+ * Created by Administrator on 7/25/2016.
  */
-public class Food extends Entity {
+public class Food extends RealmObject{
 
     //region Properties
 
-    private int id;
+    @SerializedName("id")
+    @PrimaryKey
+    private int mId;
 
-    private String name;
+    @SerializedName("name")
+    private String mName;
 
-    private String image;
+    @SerializedName("image")
+    private String mImage;
 
-    private Category category;
+    @SerializedName("category_id")
+    private int mCategoryId;
 
-    private String content;
+    @SerializedName("content")
+    private String mContent;
 
-    private User author;
+    @SerializedName("created_at")
+    private Date mCreatedAt;
+
+    @SerializedName("updated_at")
+    private Date mUpdatedAt;
+
+    @SerializedName("is_deleted")
+    private boolean mIsDeleted;
+
+    @SerializedName("restaurant_id")
+    private int restaurantId;
 
     //endregion
 
-    //region Getter and Setter
+    //region Constructors
 
-    @Override
-    public int getId() {
-        return id;
+    //endregion
+
+    //region Setters and Getters
+
+    public String getContent() {
+        return mContent;
     }
 
-    @Override
-    public void setId(int id) {
-        this.id = id;
+    public void setContent(String mContent) {
+        this.mContent = mContent;
     }
 
-    public String getName() {
-        return name;
+    public int getCategoryId() {
+        return mCategoryId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCategoryId(int mCategoryId) {
+        this.mCategoryId = mCategoryId;
     }
 
     public String getImage() {
-        return image;
+        return mImage;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImage(String mImage) {
+        this.mImage = mImage;
     }
 
-    public Category getCategory() {
-        return category;
+    public String getName() {
+        return mName;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setName(String mName) {
+        this.mName = mName;
     }
 
-    public String getContent() {
-        return content;
+    public int getRestaurantId() {
+        return restaurantId;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setRestaurantId(int restaurantId) {
+        this.restaurantId = restaurantId;
     }
 
-    public User getAuthor() {
-        return author;
+    public boolean isDeleted() {
+        return mIsDeleted;
     }
 
-    public void setAuthor(User author) {
-        this.author = author;
+    public void setDeleted(boolean deleted) {
+        mIsDeleted = deleted;
+    }
+
+    public Date getUpdatedAt() {
+        return mUpdatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        mUpdatedAt = updatedAt;
+    }
+
+    public Date getCreatedAt() {
+        return mCreatedAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        mCreatedAt = createdAt;
+    }
+
+    public int getId() {
+        return mId;
+    }
+
+    public void setId(int id) {
+        mId = id;
     }
 
     //endregion
 
     //region Constructor
 
+    public Food(int id, String name, String image, int categoryId, String content, int restaurantId) {
+        mId = id;
+        mName = name;
+        mImage = image;
+        mCategoryId = categoryId;
+        mContent = content;
+        this.restaurantId = restaurantId;
+    }
 
     public Food() {
-    }
-
-    public Food(int id, String name, String image, Category category, String content, User author) {
-        super();
-        this.id = id;
-        this.name = name;
-        this.image = image;
-        this.category = category;
-        this.content = content;
-        this.author = author;
-    }
-
-    //endregion
-
-    //region Builder
-
-    public static class Builder implements IBuilder<Food>{
-
-        //region Properties
-
-        private int mId;
-
-        private String mName;
-
-        private String mImage;
-
-        private Category mCategory;
-
-        private String mContent;
-
-        private User mUser;
-
-        //endregion
-
-        //region Getter and Setter
-
-        public Builder setUser(User user) {
-            mUser = user;
-            return this;
-        }
-
-        public Builder setName(String name) {
-            mName = name;
-            return this;
-        }
-
-        public Builder setImage(String image) {
-            mImage = image;
-            return this;
-        }
-
-        public Builder setCategory(Category category) {
-            mCategory = category;
-            return this;
-        }
-
-        public Builder setContent(String content) {
-            mContent = content;
-            return this;
-        }
-
-        public Builder setId(int id) {
-            mId = id;
-            return this;
-        }
-
-        //endregion
-
-        //region implements IBuilder
-
-        @Override
-        public Food build() {
-            Food food = new Food();
-            food.setId(mId);
-            food.setName(mName);
-            food.setCategory(mCategory);
-            food.setContent(mContent);
-            food.setAuthor(mUser);
-            return food;
-        }
-
-        //endregion
     }
 
     //endregion

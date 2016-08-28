@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.nhutdu.core.model.entities.Category;
 import com.nhutdu.core.model.services.clouds.CategoryCloudService;
+import com.nhutdu.core.model.services.storages.CategoryStorageService;
 import com.nhutdu.core.view.Constants;
 import com.nhutdu.core.view.ICallback;
 import com.nhutdu.core.view.INavigator;
@@ -25,6 +26,8 @@ public class CategoryViewModel extends BaseViewModel {
 
     private CategoryCloudService mCategoryCloudService;
 
+    private CategoryStorageService mCategoryStorageService;
+
     //endregion
 
     //region Getter and Setter
@@ -43,9 +46,10 @@ public class CategoryViewModel extends BaseViewModel {
 
     //region Constructor
 
-    public CategoryViewModel(INavigator navigator, CategoryCloudService categoryCloudService) {
+    public CategoryViewModel(INavigator navigator, CategoryCloudService categoryCloudService, CategoryStorageService categoryStorageService) {
         super(navigator);
         this.mCategoryCloudService = categoryCloudService;
+        this.mCategoryStorageService = categoryStorageService;
 
     }
 
@@ -54,6 +58,22 @@ public class CategoryViewModel extends BaseViewModel {
     //region Private methods
 
     private void loadCategory(){
+
+        mCategoryStorageService.getAllCategories(new ICallback<List<Category>>() {
+            @Override
+            public void onResult(List<Category> result) {
+                Log.d(TAG,"size category "+result.size());
+                setCategories(result);
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+
+            }
+        });
+
+
+        /*
         mCategoryCloudService.getAllCategories(new ICallback<List<Category>>() {
             @Override
             public void onResult(List<Category> result) {
@@ -67,17 +87,16 @@ public class CategoryViewModel extends BaseViewModel {
             }
         });
         getNavigator().hideBusyIndicator();
-
+        */
     }
 
     //endregion
 
     //region Public methods
 
-    public void showRestaurant(Category category){
-        Log.d("show restaurant","OK");
+    public void showRestaurantByCategory(Category category){
+        Log.d("send category",category.getName());
         getEventBus().postSticky(category);
-
         getNavigator().navigateTo(Constants.LIST_RESTAURANT_PAGE);
 
     }
@@ -89,7 +108,7 @@ public class CategoryViewModel extends BaseViewModel {
     public void onCreate() {
         super.onCreate();
         Log.d(TAG,"OK");
-        getNavigator().showBusyIndicator("Loading....");
+//        getNavigator().showBusyIndicator("Loading....");
         loadCategory();
 
     }
@@ -100,7 +119,6 @@ public class CategoryViewModel extends BaseViewModel {
         super.onStart();
 
         Log.d(TAG,"OK");
-        getNavigator().showBusyIndicator("Loading....");
         loadCategory();
 
     }

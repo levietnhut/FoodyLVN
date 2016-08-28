@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.nhutdu.core.viewmodel.ListRestaurantViewModel"/>
+            type="com.nhutdu.core.viewmodel.RestaurantsByCategoryViewModel"/>
     </data>
 
     <android.support.v7.widget.RecyclerView

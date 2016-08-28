@@ -1,5 +1,7 @@
 package com.nhutdu.core.view;
 
+import android.app.Fragment;
+
 /**
  * Created by TVG on 7/18/16.
  */
@@ -79,5 +81,7 @@ public interface INavigator {
      * @return
      */
     boolean isBusyIndicatorShowing();
+
+    void navigateTo(int fragmentId, Fragment fragment);
 
 }

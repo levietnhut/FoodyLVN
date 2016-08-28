@@ -2,7 +2,6 @@ package com.nhutdu.core.viewmodel;
 
 import android.databinding.Bindable;
 
-import com.nhutdu.core.BR;
 import com.nhutdu.core.model.entities.Contact;
 import com.nhutdu.core.model.services.IUserService;
 import com.nhutdu.core.view.Constants;
@@ -27,7 +26,7 @@ public class ContactViewModel extends BaseViewModel {
 
     public void setContact(Contact mContactr) {
         this.mContact = mContactr;
-        notifyPropertyChanged(BR.contact);
+//        notifyPropertyChanged(BR.contact);
     }
 
 

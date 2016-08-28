@@ -30,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Username"
-                android:text=""/>
+                android:text="@={viewModel.user.email}"/>
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password"
-                android:text=""/>
+                android:text="@={viewModel.user.password}"/>
         </android.support.design.widget.TextInputLayout>
         <Button
             android:layout_width="wrap_content"
@@ -48,6 +48,14 @@
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_gravity="center_horizontal"
             android:onClick="@{() -> viewModel.logIn(viewModel.user)}"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="@android:color/holo_red_light"
+            android:text="@{viewModel.error}"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

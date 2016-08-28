@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.nhutdu.core.model.entities.Restaurant;
 import com.nhutdu.core.view.BaseRecyclerViewAdapter;
 import com.nhutdu.core.view.ViewHolder;
+import com.nhutdu.core.viewmodel.LatestRestaurantsViewModel;
 import com.nhutdu.core.viewmodel.RestaurantViewModel;
 import com.nhutdu.foodylvn.R;
 import com.nhutdu.foodylvn.BR;
@@ -17,7 +18,7 @@ import java.util.List;
 /**
  * Created by TVG on 7/28/16.
  */
-public class LatestRestaurantsListAdapter extends BaseRecyclerViewAdapter<RestaurantViewModel, List<Restaurant>> {
+public class LatestRestaurantsListAdapter extends BaseRecyclerViewAdapter<LatestRestaurantsViewModel, List<Restaurant>> {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

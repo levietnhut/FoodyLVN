@@ -9,5 +9,5 @@ import com.nhutdu.core.view.ICallback;
 public interface IUserService {
 
     void logIn(User user, ICallback<User> callback);
-    void register(User user, ICallback<User> callback);
+    void register(User user, ICallback<Boolean> callback);
 }

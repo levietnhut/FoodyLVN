@@ -6,9 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.nhutdu.core.view.BaseActivity;
 import com.nhutdu.core.view.BaseFragment;
+import com.nhutdu.core.viewmodel.AddRestaurantViewModel;
 import com.nhutdu.core.viewmodel.CategoryViewModel;
+import com.nhutdu.foodylvn.App;
+import com.nhutdu.foodylvn.BR;
 import com.nhutdu.foodylvn.R;
+import com.nhutdu.foodylvn.databinding.ActivityAddRestaurantBinding;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 import java.util.ArrayList;
@@ -18,18 +23,12 @@ import java.util.List;
 /**
  * Created by NhutDu on 06/08/2016.
  */
-public class CreateRestaurantActivity extends AppCompatActivity{
-    Spinner spinner;
+public class CreateRestaurantActivity extends BaseActivity<ActivityAddRestaurantBinding,AddRestaurantViewModel>{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        App.sharedComponent().inject(this);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_restaurant);
-        String[] SPINNERLIST = {"Android Material Design", "Material Design Spinner", "Spinner Using Material Library", "Material Spinner Example"};
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_dropdown_item_1line, SPINNERLIST);
-        MaterialBetterSpinner materialDesignSpinner = (MaterialBetterSpinner)
-                findViewById(R.id.android_material_design_spinner);
-        materialDesignSpinner.setAdapter(arrayAdapter);
+
+        setBindingContentView(R.layout.activity_add_restaurant, BR.viewModel);
     }
 }

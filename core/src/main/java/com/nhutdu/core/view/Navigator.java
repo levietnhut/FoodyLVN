@@ -1,6 +1,8 @@
 package com.nhutdu.core.view;
 
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.app.ActivityCompat;
@@ -166,6 +168,13 @@ public class Navigator implements INavigator {
     @Override
     public boolean isBusyIndicatorShowing() {
         return mBusyIndicator != null && mBusyIndicator.isShowing();
+    }
+
+    @Override
+    public void navigateTo(int fragmentId, Fragment fragment) {
+        FragmentManager fragmentManager = getApplication().getCurrentActivity().getFragmentManager();
+
+        fragmentManager.beginTransaction().replace(fragmentId, fragment).commit();
     }
 
     //endregion

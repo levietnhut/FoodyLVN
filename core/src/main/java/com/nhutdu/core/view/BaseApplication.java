@@ -4,6 +4,11 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 
+import com.nhutdu.core.model.entities.User;
+
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+
 /**
  * Created by TVG on 7/18/16.
  */
@@ -12,6 +17,8 @@ public abstract class BaseApplication extends Application implements Application
     //region Properties
 
     private Activity mCurrentActivity;
+
+    private User mUserLogin;
 
     //endregion
 
@@ -25,6 +32,18 @@ public abstract class BaseApplication extends Application implements Application
         return mCurrentActivity != null;
     }
 
+    public User getUserLogin() {
+        return mUserLogin;
+    }
+
+    public void setUserLogin(User userLogin) {
+        mUserLogin = userLogin;
+    }
+
+    public boolean isUserLogin(){
+        return (mUserLogin !=null);
+    }
+
     //endregion
 
     //region Application lifecycle
@@ -34,6 +53,9 @@ public abstract class BaseApplication extends Application implements Application
         super.onCreate();
 
         registerActivityLifecycleCallbacks(this);
+
+        RealmConfiguration realmConfig = new RealmConfiguration.Builder(getApplicationContext()).deleteRealmIfMigrationNeeded().build();
+        Realm.setDefaultConfiguration(realmConfig);
     }
 
     //endregion
