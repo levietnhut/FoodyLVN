@@ -18,6 +18,7 @@ import com.nhutdu.foodylvn.activities.ListRestaurantActivity;
 import com.nhutdu.foodylvn.activities.LoginActivity;
 import com.nhutdu.foodylvn.activities.MainActivity;
 import com.nhutdu.foodylvn.activities.RegisterActivity;
+import com.nhutdu.foodylvn.activities.RestaurantDetailActivity;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -60,6 +61,7 @@ public class App extends BaseApplication {
         navigator.configure(Constants.ABOUT_PAGE, AboutActivity.class);
         navigator.configure(Constants.CREATE_RESTAURANT_PAGE, CreateRestaurantActivity.class);
         navigator.configure(Constants.LIST_RESTAURANT_PAGE, ListRestaurantActivity.class);
+        navigator.configure(Constants.RESTAURANT_DETAIL_PAGE, RestaurantDetailActivity.class);
 
         sAppComponent = DaggerAppComponent.builder()
                                           .appModule(appModule)

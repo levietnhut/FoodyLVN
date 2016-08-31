@@ -52,9 +52,7 @@ public class RegisterViewModel extends BaseViewModel{
 
     }
 
-
     //endregion
-
 
     //region Constructor
 
@@ -103,7 +101,8 @@ public class RegisterViewModel extends BaseViewModel{
             mUserStorageService.register(user, new ICallback<Boolean>() {
                 @Override
                 public void onResult(Boolean result) {
-                    if(result==true){
+                    if(result){
+                        Log.d(TAG,"register success");
                         getNavigator().goBack();
                     }else{
                         setError("Email đã được dùng");

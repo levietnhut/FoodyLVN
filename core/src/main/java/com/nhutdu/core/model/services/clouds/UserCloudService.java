@@ -3,9 +3,12 @@ package com.nhutdu.core.model.services.clouds;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.nhutdu.core.model.entities.Restaurant;
 import com.nhutdu.core.model.entities.User;
 import com.nhutdu.core.model.services.IUserService;
 import com.nhutdu.core.view.ICallback;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -48,6 +51,22 @@ public class UserCloudService extends BaseCloudService<IUserCloudService> implem
     @Override
     public void register(User user, ICallback<Boolean> callback) {
     }
+
+    @Override
+    public void addFavoriteRestaurants(User user, Restaurant restaurant, ICallback<Boolean> callback) {
+
+    }
+
+    @Override
+    public void removeFavoriteRestaurants(User user, Restaurant restaurant, ICallback<Boolean> callback) {
+
+    }
+
+    @Override
+    public void getFavoriteRestaurants(User user, ICallback<List<Restaurant>> callback) {
+
+    }
+
 
     //endregion
 }

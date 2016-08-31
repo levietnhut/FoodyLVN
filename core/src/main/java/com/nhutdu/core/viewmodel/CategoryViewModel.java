@@ -73,7 +73,6 @@ public class CategoryViewModel extends BaseViewModel {
         });
 
 
-        /*
         mCategoryCloudService.getAllCategories(new ICallback<List<Category>>() {
             @Override
             public void onResult(List<Category> result) {
@@ -87,7 +86,6 @@ public class CategoryViewModel extends BaseViewModel {
             }
         });
         getNavigator().hideBusyIndicator();
-        */
     }
 
     //endregion

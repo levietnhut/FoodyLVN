@@ -13,6 +13,6 @@ public final class Configuration {
 
     //endregion
 
-    public static final String FOODY_API_URL = "http://6fec72c0.ngrok.io/";
+    public static final String FOODY_API_URL = "http://167.88.124.80/foody_api_nhut/";
 
 }

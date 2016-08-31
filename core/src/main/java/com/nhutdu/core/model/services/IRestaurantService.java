@@ -1,6 +1,7 @@
 package com.nhutdu.core.model.services;
 
 import com.nhutdu.core.model.entities.Category;
+import com.nhutdu.core.model.entities.Comment;
 import com.nhutdu.core.model.entities.Restaurant;
 import com.nhutdu.core.view.ICallback;
 
@@ -15,4 +16,6 @@ public interface IRestaurantService {
     void saveRestaurant(Restaurant restaurant, ICallback<Boolean> callback);
     void saveRestaurants(List<Restaurant> restaurants, ICallback<Boolean> callback);
     void getRestaurantsByCategory(Category category,ICallback<List<Restaurant>> callback);
+    void addComment(Comment comment,Restaurant restaurant,ICallback<Boolean> callback);
+
 }

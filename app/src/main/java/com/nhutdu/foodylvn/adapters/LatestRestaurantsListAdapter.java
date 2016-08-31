@@ -10,7 +10,6 @@ import com.nhutdu.core.model.entities.Restaurant;
 import com.nhutdu.core.view.BaseRecyclerViewAdapter;
 import com.nhutdu.core.view.ViewHolder;
 import com.nhutdu.core.viewmodel.LatestRestaurantsViewModel;
-import com.nhutdu.core.viewmodel.RestaurantViewModel;
 import com.nhutdu.foodylvn.R;
 import com.nhutdu.foodylvn.BR;
 import java.util.List;

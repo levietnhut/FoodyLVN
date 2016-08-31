@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nhutdu.foodylvn" >
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -31,6 +32,8 @@
                   android:parentActivityName=".activities.MainActivity"/>
         <activity android:name=".activities.ListRestaurantActivity"
             android:parentActivityName=".activities.MainActivity"/>
+        <activity android:name=".activities.RestaurantDetailActivity"
+            android:parentActivityName=".activities.ListRestaurantActivity"/>
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package com.nhutdu.core.model.services.clouds;
 
 import com.nhutdu.core.model.entities.Category;
+import com.nhutdu.core.model.entities.Restaurant;
 import com.nhutdu.core.model.responses.ApiResponse;
 
 import java.util.List;

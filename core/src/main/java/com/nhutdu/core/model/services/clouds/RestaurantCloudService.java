@@ -3,6 +3,7 @@ package com.nhutdu.core.model.services.clouds;
 import android.util.Log;
 
 import com.nhutdu.core.model.entities.Category;
+import com.nhutdu.core.model.entities.Comment;
 import com.nhutdu.core.model.entities.Restaurant;
 import com.nhutdu.core.model.responses.ApiResponse;
 import com.nhutdu.core.model.services.IRestaurantService;
@@ -38,7 +39,16 @@ public class RestaurantCloudService extends BaseCloudService<IRestaurantCloudSer
         getICloudService().getAllRestaurants().enqueue(new Callback<ApiResponse<List<Restaurant>>>() {
             @Override
             public void onResponse(Call<ApiResponse<List<Restaurant>>> call, Response<ApiResponse<List<Restaurant>>> response) {
+                    List<Restaurant> restaurants = response.body().getData();
 
+                    if(restaurants!=null){
+
+                        Log.d(TAG,"load restaurants success");
+                        callback.onResult(restaurants);
+
+                    }else{
+                        Log.d(TAG,"don't have restaurant");
+                    }
             }
 
             @Override
@@ -58,7 +68,28 @@ public class RestaurantCloudService extends BaseCloudService<IRestaurantCloudSer
     }
 
     @Override
-    public void getRestaurantsByCategory(Category category, ICallback<List<Restaurant>> callback) {
+    public void getRestaurantsByCategory(Category category, final ICallback<List<Restaurant>> callback) {
+        mICloudService.getRestaurantsByCategory(category.getId()).enqueue(new Callback<ApiResponse<List<Restaurant>>>() {
+            @Override
+            public void onResponse(Call<ApiResponse<List<Restaurant>>> call, Response<ApiResponse<List<Restaurant>>> response) {
+                ApiResponse<List<Restaurant>> apiResponse = response.body();
+                if(apiResponse.isSuccess()){
+                    Log.d(TAG,"load res by cat success");
+                    callback.onResult(apiResponse.getData());
+                }else{
+                    Log.d(TAG,"load res by cat failed");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse<List<Restaurant>>> call, Throwable t) {
+                Log.d(TAG,"",t);
+            }
+        });
+    }
+
+    @Override
+    public void addComment(Comment comment, Restaurant restaurant, ICallback<Boolean> callback) {
 
     }
 }

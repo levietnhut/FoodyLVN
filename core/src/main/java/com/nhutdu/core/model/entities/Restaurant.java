@@ -214,6 +214,15 @@ public class Restaurant extends RealmObject{
         mDeletedAt = deletedAt;
     }
 
+    public Restaurant(String name, String address, String openTime, String closeTime, String phoneNumber, String content) {
+        mName = name;
+        mAddress = address;
+        mOpenTime = openTime;
+        mCloseTime = closeTime;
+        mPhoneNumber = phoneNumber;
+        mContent = content;
+    }
+
     //endregion
 
 }

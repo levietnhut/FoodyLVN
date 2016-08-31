@@ -7,6 +7,7 @@ import com.nhutdu.core.BR;
 import com.nhutdu.core.model.entities.Restaurant;
 import com.nhutdu.core.model.services.clouds.RestaurantCloudService;
 import com.nhutdu.core.model.services.storages.RestaurantStorageService;
+import com.nhutdu.core.view.Constants;
 import com.nhutdu.core.view.ICallback;
 import com.nhutdu.core.view.INavigator;
 
@@ -76,7 +77,6 @@ public class LatestRestaurantsViewModel extends BaseViewModel{
                 Log.d(TAG,"",t);
             }
         });
-        /*
         mRestaurantCloudService.getAllRestaurants(new ICallback<List<Restaurant>>() {
             @Override
             public void onResult(List<Restaurant> result) {
@@ -90,7 +90,14 @@ public class LatestRestaurantsViewModel extends BaseViewModel{
             }
         });
 
-        */
+    }
+
+    public void showRestaurantDetail(Restaurant restaurant){
+
+        Log.d("res",restaurant.getName());
+        getNavigator().navigateTo(Constants.RESTAURANT_DETAIL_PAGE);
+
+        getEventBus().postSticky(restaurant);
     }
 
     //endregion
@@ -100,6 +107,11 @@ public class LatestRestaurantsViewModel extends BaseViewModel{
         super.onCreate();
         getNavigator().showBusyIndicator("Loading...");
         loadRestaurants();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
     }
 
     @Override

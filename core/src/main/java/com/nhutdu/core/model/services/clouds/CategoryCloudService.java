@@ -20,17 +20,16 @@ public class CategoryCloudService extends BaseCloudService<ICategoryCloudService
 
     //region Properties
 
-    ICategoryCloudService iICategoryCloudService;
-
     public static final String TAG = CategoryCloudService.class.getSimpleName();
 
     //endregion
 
     //region Constructor
 
-    public CategoryCloudService(ICategoryCloudService iCategoryCloudService){
-        this.iICategoryCloudService = iCategoryCloudService;
+    public CategoryCloudService(ICategoryCloudService iICategoryCloudService) {
+        mICloudService = iICategoryCloudService;
     }
+
 
     //endregion
 
@@ -39,12 +38,19 @@ public class CategoryCloudService extends BaseCloudService<ICategoryCloudService
       getICloudService().getAllCategories().enqueue(new Callback<ApiResponse<List<Category>>>() {
           @Override
           public void onResponse(Call<ApiResponse<List<Category>>> call, Response<ApiResponse<List<Category>>> response) {
+              ApiResponse<List<Category>> apiResponse = response.body();
+              if(apiResponse.isSuccess()){
 
+                    Log.d("load category","success");
+                    callback.onResult(apiResponse.getData());
+              }else{
+                    Log.d("load category","failed");
+              }
           }
 
           @Override
           public void onFailure(Call<ApiResponse<List<Category>>> call, Throwable t) {
-
+                Log.d("api","",t);
           }
       });
     }

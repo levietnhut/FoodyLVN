@@ -2,21 +2,25 @@ package com.nhutdu.core.model.entities;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.nhutdu.core.model.entities.Restaurant;
 
 import java.util.Date;
-import java.util.List;
+import java.util.UUID;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.Ignore;
+import io.realm.annotations.PrimaryKey;
 
 /**
- * Created by NhutDu on 02/08/2016.
+ * Created by Administrator on 7/31/2016.
  */
-public class User extends RealmObject{
+public class User extends RealmObject {
 
     //region Properties
 
     @SerializedName("id")
+    @PrimaryKey
     private String mId;
 
     @SerializedName("name")
@@ -25,6 +29,7 @@ public class User extends RealmObject{
     @SerializedName("password")
     private String mPassword;
 
+    @Ignore
     @Expose
     private String mRetypePassword;
 
@@ -124,26 +129,18 @@ public class User extends RealmObject{
     //region Constructors
 
     public User() {
+        super();
     }
 
     //endregion
 
-    //region Override Methods
 
     @Override
     public String toString() {
         return "User{" +
-                "mId='" + mId + '\'' +
-                ", mUserName='" + mUserName + '\'' +
+                "mUserName='" + mUserName + '\'' +
                 ", mPassword='" + mPassword + '\'' +
                 ", mEmail='" + mEmail + '\'' +
-                ", mCreatedAt=" + mCreatedAt +
-                ", mUpdatedAt=" + mUpdatedAt +
-                ", mDeletedAt=" + mDeletedAt +
                 '}';
     }
-
-
-    //endregion
-
 }

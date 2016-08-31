@@ -91,6 +91,18 @@ public class RestaurantsByCategoryViewModel extends BaseViewModel {
 
             }
         });
+
+        mRestaurantCloudService.getRestaurantsByCategory(category, new ICallback<List<Restaurant>>() {
+            @Override
+            public void onResult(List<Restaurant> result) {
+                setRestaurants(result);
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+
+            }
+        });
     }
 
     //endregion

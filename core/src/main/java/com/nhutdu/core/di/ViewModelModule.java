@@ -9,12 +9,15 @@ import com.nhutdu.core.model.services.storages.UserStorageService;
 import com.nhutdu.core.view.INavigator;
 import com.nhutdu.core.viewmodel.AddRestaurantViewModel;
 import com.nhutdu.core.viewmodel.CategoryViewModel;
+import com.nhutdu.core.viewmodel.CommentViewModel;
 import com.nhutdu.core.viewmodel.ContactViewModel;
+import com.nhutdu.core.viewmodel.FavoriteRestaurantViewModel;
 import com.nhutdu.core.viewmodel.LatestRestaurantsViewModel;
+import com.nhutdu.core.viewmodel.MainViewModel;
 import com.nhutdu.core.viewmodel.RegisterViewModel;
 import com.nhutdu.core.viewmodel.RestaurantsByCategoryViewModel;
 import com.nhutdu.core.viewmodel.LoginViewModel;
-import com.nhutdu.core.viewmodel.RestaurantViewModel;
+import com.nhutdu.core.viewmodel.RestaurantDetailViewModel;
 
 import javax.inject.Singleton;
 
@@ -56,12 +59,6 @@ public class ViewModelModule {
 
     @Provides
     @Singleton
-    public RestaurantViewModel providesRestaurantViewModel(INavigator iNavigator, RestaurantCloudService restaurantCloudService, RestaurantStorageService restaurantStorageService){
-        return new RestaurantViewModel(iNavigator,restaurantCloudService,restaurantStorageService);
-    }
-
-    @Provides
-    @Singleton
     public RegisterViewModel providesRegisterViewModel(INavigator iNavigator,UserCloudService userCloudService,UserStorageService userStorageService){
         return new RegisterViewModel(iNavigator,userCloudService,userStorageService);
     }
@@ -76,6 +73,30 @@ public class ViewModelModule {
     @Singleton
     public LatestRestaurantsViewModel providesLatestRestaurantsViewModel(INavigator iNavigator, RestaurantCloudService restaurantCloudService, RestaurantStorageService restaurantStorageService){
         return new LatestRestaurantsViewModel(iNavigator,restaurantCloudService,restaurantStorageService);
+    }
+
+    @Provides
+    @Singleton
+    public RestaurantDetailViewModel providesRestaurantViewModel(INavigator iNavigator, RestaurantCloudService restaurantCloudService, RestaurantStorageService restaurantStorageService){
+        return new RestaurantDetailViewModel(iNavigator,restaurantCloudService,restaurantStorageService);
+    }
+
+    @Provides
+    @Singleton
+    public MainViewModel providesMainViewModel(INavigator iNavigator, UserCloudService userCloudService, UserStorageService userStorageService){
+        return new MainViewModel(iNavigator,userCloudService,userStorageService);
+    }
+
+    @Provides
+    @Singleton
+    public FavoriteRestaurantViewModel providesFavoriteRestaurantViewModel(INavigator iNavigator, UserCloudService userCloudService, UserStorageService userStorageService){
+        return new FavoriteRestaurantViewModel(iNavigator,userCloudService,userStorageService);
+    }
+
+    @Provides
+    @Singleton
+    public CommentViewModel providesCommentViewModel(INavigator iNavigator, RestaurantCloudService restaurantCloudService, RestaurantStorageService restaurantStorageService){
+        return new CommentViewModel(iNavigator,restaurantCloudService,restaurantStorageService);
     }
 
     //endregion

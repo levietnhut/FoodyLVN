@@ -3,6 +3,7 @@ package com.nhutdu.core.model.services.storages;
 import android.util.Log;
 
 import com.nhutdu.core.model.entities.Category;
+import com.nhutdu.core.model.entities.Comment;
 import com.nhutdu.core.model.entities.Restaurant;
 import com.nhutdu.core.model.services.IRestaurantService;
 import com.nhutdu.core.view.ICallback;
@@ -55,7 +56,7 @@ public class RestaurantStorageService extends BaseStorageService implements IRes
         mRealm.executeTransactionAsync(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
-                Restaurant res = realm.copyFromRealm(restaurant);
+                Restaurant res = realm.copyToRealmOrUpdate(restaurant);
                 Log.d(TAG,"save restaurant success");
             }
         }, new Realm.Transaction.OnSuccess() {
@@ -102,6 +103,11 @@ public class RestaurantStorageService extends BaseStorageService implements IRes
                 restaurants.removeChangeListener(this);
             }
         });
+    }
+
+    @Override
+    public void addComment(Comment comment, Restaurant restaurant, ICallback<Boolean> callback) {
+
     }
 
     //endregion

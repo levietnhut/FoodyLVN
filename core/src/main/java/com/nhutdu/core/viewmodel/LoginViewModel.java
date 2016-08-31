@@ -1,6 +1,7 @@
 package com.nhutdu.core.viewmodel;
 
 import android.databinding.Bindable;
+import android.databinding.tool.util.L;
 import android.util.Log;
 
 import com.nhutdu.core.BR;
@@ -93,6 +94,7 @@ public class LoginViewModel extends BaseViewModel {
         mUser = new User();
         mUser.setEmail("");
         mUser.setPassword("");
+        mUserStorageService.getAllUser();
     }
 
     @Override
@@ -117,32 +119,35 @@ public class LoginViewModel extends BaseViewModel {
 
     //region Private methods
 
-    public void logIn(final User user){
-        getNavigator().showBusyIndicator("Login....");
-        if(validateUser(user)){
+    public void logIn(User user) {
+
+        if (validateUser(user)) {
+            getNavigator().showBusyIndicator("Đăng nhập");
+
+
             mUserStorageService.logIn(user, new ICallback<User>() {
                 @Override
                 public void onResult(User result) {
-                    if(result.isLoaded() && result.isValid()){
 
+                    Log.d("result", result.toString());
+
+                    if (result.isLoaded() && result.isValid()) {
                         getNavigator().hideBusyIndicator();
 
-                        getEventBus().postSticky(result);
+                        getEventBus().post(result);
 
                         getNavigator().getApplication().setUserLogin(result);
 
                         getNavigator().goBack();
-
-                    }else{
-                        getNavigator().hideBusyIndicator();
-                        setError("Sai tài khoản hoặc mật khẩu");
                     }
-
+                    else {
+                        setError("Tài khoản hoặc mật khẩu không đúng");
+                        getNavigator().hideBusyIndicator();
+                    }
                 }
 
                 @Override
                 public void onFailure(Throwable t) {
-                    Log.d(TAG,"",t);
                     getNavigator().hideBusyIndicator();
                 }
             });

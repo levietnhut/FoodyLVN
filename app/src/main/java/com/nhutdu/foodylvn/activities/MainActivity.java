@@ -13,19 +13,24 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.nhutdu.core.view.BaseActivity;
 import com.nhutdu.core.view.Navigator;
+import com.nhutdu.core.viewmodel.MainViewModel;
+import com.nhutdu.foodylvn.App;
 import com.nhutdu.foodylvn.R;
 import com.nhutdu.foodylvn.adapters.ViewPagerAdapter;
+import com.nhutdu.foodylvn.databinding.ActivityMainBinding;
 import com.nhutdu.foodylvn.fragments.CategoryFragment;
 import com.nhutdu.foodylvn.fragments.LatestRestaurantsFragment;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends BaseActivity<ActivityMainBinding,MainViewModel>
         implements NavigationView.OnNavigationItemSelectedListener {
     Navigator mNavigator;
     TabLayout mTabLayout;
     ViewPager mViewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        App.sharedComponent().inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
